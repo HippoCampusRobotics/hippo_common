@@ -7,13 +7,6 @@
 namespace hippo_common {
 namespace param_utils {
 
-/**
- * \def ASSIGN_CONTINUE(param, name, var)
- * Convenience macro to assign parameters in a loop.
- * 
- */
-#define ASSIGN_CONTINUE(param, name, var) \
-  if (hippo_common::param_utils::AssignIfMatch(param, name, var)) continue
 template <typename T>
 void Assign(const rclcpp::Parameter &_param, T &_var) {
   _var = _param.get_value<T>();
