@@ -9,13 +9,6 @@ Example:
     vehicle_type:=hippocampus
 """
 
-from launch import LaunchDescription
-from launch.actions import (
-    DeclareLaunchArgument,
-    IncludeLaunchDescription,
-)
-from launch.conditions import IfCondition
-from launch.substitutions import EqualsSubstitution, LaunchConfiguration
 from launch_ros.actions import Node
 
 from hippo_common.launch_helper import (
@@ -26,6 +19,13 @@ from hippo_common.launch_helper import (
     launch_file_source,
     require_hippocampus_vehicle_type,
 )
+from launch import LaunchDescription
+from launch.actions import (
+    DeclareLaunchArgument,
+    IncludeLaunchDescription,
+)
+from launch.conditions import IfCondition
+from launch.substitutions import EqualsSubstitution, LaunchConfiguration
 
 
 def declare_launch_args(launch_description: LaunchDescription):
