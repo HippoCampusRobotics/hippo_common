@@ -1,0 +1,22 @@
+hippo_common:
+  ubuntu: [ros-iron-hippo-common]
+hippo_msgs:
+  ubuntu: [ros-iron-hippo-msgs]
+hippo_control_msgs:
+  ubuntu: [ros-iron-hippo-control-msgs]
+dvl_msgs:
+  ubuntu: [ros-iron-dvl-msgs]
+acoustic_msgs:
+  ubuntu: [ros-iron-acoustic-msgs]
+esc:
+  ubuntu: [ros-iron-esc]
+hippo_control:
+  ubuntu: [ros-iron-hippo-control]
+path_planning:
+  ubuntu: [ros-iron-path-planning]
+px4_msgs:
+  ubuntu: [ros-iron-px4-msgs]
+mjpeg_cam:
+  ubuntu: [ros-iron-mjpeg-cam]
+remote_control:
+  ubuntu: [ros-iron-remote-control]
