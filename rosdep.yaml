@@ -8,14 +8,18 @@ dvl_msgs:
   ubuntu: [ros-iron-dvl-msgs]
 acoustic_msgs:
   ubuntu: [ros-iron-acoustic-msgs]
+buttons_msgs:
+  ubuntu: [ros-iron-buttons-msgs]
+px4_msgs:
+  ubuntu: [ros-iron-px4-msgs]
+gantry_msgs:
+  ubuntu: [ros-iron-gantry-msgs]
 esc:
   ubuntu: [ros-iron-esc]
 hippo_control:
   ubuntu: [ros-iron-hippo-control]
 path_planning:
   ubuntu: [ros-iron-path-planning]
-px4_msgs:
-  ubuntu: [ros-iron-px4-msgs]
 mjpeg_cam:
   ubuntu: [ros-iron-mjpeg-cam]
 remote_control:
