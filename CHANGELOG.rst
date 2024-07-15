@@ -2,8 +2,8 @@
 Changelog for package hippo_common
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.0 (2024-07-15)
+------------------
 * added all our prebuilt msg packages
 * updated rosdeps to include gantry_msgs
 * added rosdep.yaml for hippocampus custom rosdeps
