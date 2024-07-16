@@ -35,3 +35,5 @@ mjpeg_cam:
   ubuntu: [ros-iron-mjpeg-cam]
 remote_control:
   ubuntu: [ros-iron-remote-control]
+hardware:
+  ubuntu: [ros-iron-hardware]
