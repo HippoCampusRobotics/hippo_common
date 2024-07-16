@@ -37,3 +37,5 @@ remote_control:
   ubuntu: [ros-iron-remote-control]
 hardware:
   ubuntu: [ros-iron-hardware]
+dvl:
+  ubuntu: [ros-iron-dvl]
