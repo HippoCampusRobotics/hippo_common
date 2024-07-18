@@ -1,0 +1,41 @@
+hippo_common:
+  ubuntu: [ros-jazzy-hippo-common]
+
+# OUR MESSAGES
+acoustic_msgs:
+  ubuntu: [ros-jazzy-acoustic-msgs]
+alpha_msgs:
+  ubuntu: [ros-jazzy-alpha-msgs]
+buttons_msgs:
+  ubuntu: [ros-jazzy-buttons-msgs]
+dvl_msgs:
+  ubuntu: [ros-jazzy-dvl-msgs]
+gantry_msgs:
+  ubuntu: [ros-jazzy-gantry-msgs]
+hippo_control_msgs:
+  ubuntu: [ros-jazzy-hippo-control-msgs]
+hippo_msgs:
+  ubuntu: [ros-jazzy-hippo-msgs]
+rapid_trajectories_msgs:
+  ubuntu: [ros-jazzy-rapid-trajectories-msgs]
+state_estimation_msgs:
+  ubuntu: [ros-jazzy-state-estimation-msgs]
+uvms_msgs:
+  ubuntu: [ros-jazzy-uvms-msgs]
+
+px4_msgs:
+  ubuntu: [ros-jazzy-px4-msgs]
+esc:
+  ubuntu: [ros-jazzy-esc]
+hippo_control:
+  ubuntu: [ros-jazzy-hippo-control]
+path_planning:
+  ubuntu: [ros-jazzy-path-planning]
+mjpeg_cam:
+  ubuntu: [ros-jazzy-mjpeg-cam]
+remote_control:
+  ubuntu: [ros-jazzy-remote-control]
+hardware:
+  ubuntu: [ros-jazzy-hardware]
+dvl:
+  ubuntu: [ros-jazzy-dvl]
