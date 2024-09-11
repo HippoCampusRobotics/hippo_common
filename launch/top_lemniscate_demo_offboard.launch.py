@@ -3,9 +3,10 @@ This launch file starts all nodes that are not required to run directly on the
 board computer to perform the lemniscate demo.
 
 Example:
-    ros2 launch hippo_common top_lemniscate_demo_offboard.launch.py \\
-    vehicle_name:=uuv02 \\
-    use_sim_time:=false \\
+    ros2 launch hippo_common top_lemniscate_demo_offboard.launch.py \
+    vehicle_name:=uuv02 \
+    use_sim_time:=false \
+    use_apriltags:=true \
     vehicle_type:=hippocampus
 """
 
@@ -25,7 +26,11 @@ from launch.actions import (
     IncludeLaunchDescription,
 )
 from launch.conditions import IfCondition
-from launch.substitutions import EqualsSubstitution, LaunchConfiguration
+from launch.substitutions import (
+    EqualsSubstitution,
+    LaunchConfiguration,
+    NotSubstitution,
+)
 
 
 def declare_launch_args(launch_description: LaunchDescription):
@@ -33,6 +38,9 @@ def declare_launch_args(launch_description: LaunchDescription):
     declare_vehicle_type(launch_description)
 
     action = require_hippocampus_vehicle_type()
+    launch_description.add_action(action)
+
+    action = DeclareLaunchArgument('use_apriltags')
     launch_description.add_action(action)
 
     pkg = 'hippo_common'
@@ -64,12 +72,26 @@ def include_path_follower():
     return IncludeLaunchDescription(source, launch_arguments=args.items())
 
 
-def include_visual_localization():
+def include_visual_localization(condition):
     args = LaunchArgsDict()
     args.add_vehicle_name_and_sim_time()
     pkg = 'visual_localization'
     source = launch_file_source(pkg, 'top_localization.launch.py')
-    return IncludeLaunchDescription(source, launch_arguments=args.items())
+    return IncludeLaunchDescription(
+        source,
+        launch_arguments=args.items(),
+        condition=IfCondition(condition),
+    )
+
+
+def include_qualisys_localization(condition):
+    args = LaunchArgsDict()
+    args.add_vehicle_name_and_sim_time()
+    pkg = 'qualisys_bridge'
+    source = launch_file_source(pkg, 'qualisys_bridge.launch.py')
+    return IncludeLaunchDescription(
+        source, launch_arguments=args.items(), condition=IfCondition(condition)
+    )
 
 
 def add_tf_publisher_vehicle_node():
@@ -104,7 +126,10 @@ def generate_launch_description():
         include_path_follower(),
         add_tf_publisher_vehicle_node(),
         add_px4_bridge_node(),
-        include_visual_localization(),
+        include_visual_localization(LaunchConfiguration('use_apriltags')),
+        include_qualisys_localization(
+            NotSubstitution(LaunchConfiguration('use_apriltags'))
+        ),
     ]
     for action in actions:
         launch_description.add_action(action)
