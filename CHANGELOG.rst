@@ -2,8 +2,8 @@
 Changelog for package hippo_common
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2024-09-11)
+------------------
 * lemniscate demo work with qualisys or onboard camera
 * moved rosdep to ros-infrastructure
 * added readme
