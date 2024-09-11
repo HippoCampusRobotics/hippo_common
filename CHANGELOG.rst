@@ -2,6 +2,23 @@
 Changelog for package hippo_common
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* lemniscate demo work with qualisys or onboard camera
+* moved rosdep to ros-infrastructure
+* added readme
+* another test commit
+* Revert "another test commit"
+  This reverts commit ca0355cd995f5cc574d46c50648c34d75b42d716.
+* another test commit
+* Revert "testcommit"
+  This reverts commit 9f26f2363b9e103f2f21faf4f7df714c488bfd9e.
+* testcommit
+* ros-distro specific rosdep file
+* added dvl to rosdep
+* added packages to rosdep
+* Contributors: Thies Lennart Alff
+
 1.0.0 (2024-07-15)
 ------------------
 * added all our prebuilt msg packages
