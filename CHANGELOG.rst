@@ -2,6 +2,12 @@
 Changelog for package hippo_common
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fixed error in heading/roll to quaternion conversion
+* updated formmating
+* Contributors: Thies Lennart Alff
+
 1.0.1 (2024-09-11)
 ------------------
 * lemniscate demo work with qualisys or onboard camera
