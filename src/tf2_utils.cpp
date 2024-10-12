@@ -42,7 +42,8 @@ Eigen::Quaterniond EulerToQuaternion(double _roll, double _pitch, double _yaw) {
  */
 Eigen::Quaterniond QuaternionFromHeading(const Eigen::Vector3d &_heading,
                                          double _roll) {
-  const Eigen::Vector3d z_axis_intermediate{0.0, -sin(_roll), cos(_roll)};
+  const Eigen::Vector3d z_axis_intermediate{Eigen::AngleAxisd{_roll, _heading} *
+                                            Eigen::Vector3d::UnitZ()};
   const Eigen::Vector3d y_axis_desired =
       z_axis_intermediate.cross(_heading).normalized();
   const Eigen::Vector3d z_axis_desired =
