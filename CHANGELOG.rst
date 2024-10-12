@@ -2,8 +2,8 @@
 Changelog for package hippo_common
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.2 (2024-10-12)
+------------------
 * fixed error in heading/roll to quaternion conversion
 * updated formmating
 * Contributors: Thies Lennart Alff
