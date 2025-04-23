@@ -28,6 +28,28 @@ template <typename T>
 constexpr bool always_false = false;
 
 template <typename In, typename Out>
+inline void EigenToEigen(const In &in, Out &out) {
+  static_assert(always_false<In>, "This conversion is not implemented");
+};
+
+template <>
+inline void EigenToEigen(const Eigen::Vector3d &_eigen_in,
+                        Eigen::Vector3d &_eigen_out) {
+  _eigen_out.x() = _eigen_in.x();
+  _eigen_out.y() = _eigen_in.y();
+  _eigen_out.z() = _eigen_in.z();
+}
+
+template <>
+inline void EigenToEigen(const Eigen::Quaterniond &_eigen_in,
+                        Eigen::Quaterniond &_eigen_out) {
+  _eigen_out.w() = _eigen_in.w();
+  _eigen_out.x() = _eigen_in.x();
+  _eigen_out.y() = _eigen_in.y();
+  _eigen_out.z() = _eigen_in.z();
+}
+
+template <typename In, typename Out>
 inline void EigenToRos(const In &_eigen, Out &_ros) {
   // static_assert(always_false<In>, "This conversion is not implemented");
   _ros.x = _eigen.x();
