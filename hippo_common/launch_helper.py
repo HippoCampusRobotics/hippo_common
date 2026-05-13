@@ -119,7 +119,7 @@ def declare_use_sim_time(launch_description: LaunchDescription, default=None):
     action = DeclareLaunchArgument(
         'use_sim_time',
         description=(
-            'Decides wether to use the wall time or the clock topic '
+            'Decides whether to use the wall time or the clock topic '
             'as time reference. Set to TRUE for simulation.'
         ),
         default_value=default,
