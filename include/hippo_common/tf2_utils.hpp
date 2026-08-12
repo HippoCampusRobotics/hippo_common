@@ -79,6 +79,7 @@ static constexpr char kVerticalCameraFrameName[] = "vertical_camera_frame";
 static constexpr char kFrontCameraName[] = "front_camera";
 static constexpr char kFrontCameraLinkName[] = "front_camera_link";
 static constexpr char kFrontCameraFrameName[] = "front_camera_frame";
+static constexpr char kIrSensorName[] = "ir_sensor";
 
 inline std::string Prefix(rclcpp::Node *_node) {
   std::string name = _node->get_namespace();
@@ -144,6 +145,12 @@ inline std::string FrontCameraLink(rclcpp::Node *_node) {
 }
 inline std::string FrontCameraFrame(rclcpp::Node *_node) {
   return Prefix(_node) + "/" + kFrontCameraFrameName;
+}
+inline std::string IrSensor(rclcpp::Node *_node) {
+  return Prefix(_node) + "/" + kIrSensorName;
+}
+inline std::string VisionIrSensor(rclcpp::Node *_node) {
+  return VisionPrefix(_node) + "/" + kIrSensorName;
 }
 
 inline std::string InertialFrame() { return kInertialName; }

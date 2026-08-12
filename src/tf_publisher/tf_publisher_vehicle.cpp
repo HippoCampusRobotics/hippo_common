@@ -78,6 +78,7 @@ void TfPublisherVehicle::OnVisionPoseCovariance(
 void TfPublisherVehicle::DeclareParameters() {
   DeclareVerticalCameraParameters();
   DeclareFrontCameraParameters();
+  DeclareIrSensorParameters();
 }
 
 void TfPublisherVehicle::DeclareCameraParameters(std::string _camera_name,
@@ -151,6 +152,20 @@ void TfPublisherVehicle::DeclareFrontCameraParameters() {
   params_.has_front_camera = declare_parameter(name, false, descr);
   if (params_.has_front_camera) {
     DeclareCameraParameters("front_camera", params_.front_camera);
+  }
+}
+
+void TfPublisherVehicle::DeclareIrSensorParameters() {
+  std::string name;
+  rcl_interfaces::msg::ParameterDescriptor descr;
+  std::string descr_text;
+
+  name = "has_ir_sensor";
+  descr_text = "If vehicle has an ir sensor";
+  descr = param_utils::Description(descr_text, true);
+  params_.has_ir_sensor = declare_parameter(name, false, descr);
+  if (params_.has_ir_sensor) {
+    DeclareCameraParameters("ir_sensor", params_.ir_sensor);
   }
 }
 
@@ -237,6 +252,25 @@ void TfPublisherVehicle::BroadCastStatic() {
     t2.header.frame_id = tf2_utils::frame_id::VisionFrontCameraLink(this);
     t2.child_frame_id = tf2_utils::frame_id::VisionFrontCameraFrame(this);
     transforms.push_back(t2);
+  }
+
+  if (params_.has_ir_sensor) {
+    RCLCPP_INFO_STREAM(get_logger(), "Publishing ir sensor transformation.");
+    geometry_msgs::msg::TransformStamped t;
+    t.transform.translation.x = params_.ir_sensor.x;
+    t.transform.translation.y = params_.ir_sensor.y;
+    t.transform.translation.z = params_.ir_sensor.z;
+    t.transform.rotation.w = params_.ir_sensor.qw;
+    t.transform.rotation.x = params_.ir_sensor.qx;
+    t.transform.rotation.y = params_.ir_sensor.qy;
+    t.transform.rotation.z = params_.ir_sensor.qz;
+    t.header.frame_id = tf2_utils::frame_id::BaseLink(this);
+    t.child_frame_id = tf2_utils::frame_id::IrSensor(this);
+    transforms.push_back(t);
+    // same transformation for the vision subtree
+    t.header.frame_id = tf2_utils::frame_id::VisionBaseLink(this);
+    t.child_frame_id = tf2_utils::frame_id::VisionIrSensor(this);
+    transforms.push_back(t);
   }
   static_broadcaster_->sendTransform(transforms);
 }
