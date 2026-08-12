@@ -27,11 +27,14 @@ class TfPublisherVehicle : public rclcpp::Node {
     Pose vertical_camera;
     bool has_front_camera{false};
     Pose front_camera;
+    bool has_ir_sensor{false};
+    Pose ir_sensor;
   };
   void DeclareParameters();
   void DeclareCameraParameters(std::string _camera_name, Pose &_pose_param);
   void DeclareVerticalCameraParameters();
   void DeclareFrontCameraParameters();
+  void DeclareIrSensorParameters();
   void BroadCastStatic();
 
   void OnOdometry(const nav_msgs::msg::Odometry::SharedPtr _msg);
