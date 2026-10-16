@@ -35,7 +35,7 @@ void TfPublisherVehicle::OnOdometry(
     const nav_msgs::msg::Odometry::SharedPtr _msg) {
   // simply publish the base link TF based on the odometry msg
   geometry_msgs::msg::TransformStamped tf;
-  tf.header.stamp = now();
+  tf.header.stamp = _msg->header.stamp;
   tf.header.frame_id = _msg->header.frame_id;
   tf.child_frame_id = hippo_common::tf2_utils::frame_id::BaseLink(this);
   tf.transform.translation.x = _msg->pose.pose.position.x;
@@ -57,7 +57,7 @@ void TfPublisherVehicle::OnVisionPoseCovariance(
     const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr _msg) {
   // simply publish the base link TF based on the vision pose
   geometry_msgs::msg::TransformStamped tf;
-  tf.header.stamp = now();
+  tf.header.stamp = _msg->header.stamp;
   tf.header.frame_id = _msg->header.frame_id;
   tf.child_frame_id = hippo_common::tf2_utils::frame_id::VisionBaseLink(this);
   tf.transform.translation.x = _msg->pose.pose.position.x;
