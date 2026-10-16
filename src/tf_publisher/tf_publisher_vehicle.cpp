@@ -81,48 +81,48 @@ void TfPublisherVehicle::DeclareParameters() {
   DeclareIrSensorParameters();
 }
 
-void TfPublisherVehicle::DeclareCameraParameters(std::string _camera_name,
-                                                 Pose &_pose_param) {
+void TfPublisherVehicle::DeclarePoseParameters(std::string _frame_name,
+                                               Pose &_pose_param) {
   std::string name;
   rcl_interfaces::msg::ParameterDescriptor descr;
   std::string descr_text;
 
-  name = _camera_name + ".x";
-  descr_text = "Camera offset in x direction relative to base_link";
+  name = _frame_name + ".x";
+  descr_text = "Frame offset in x direction relative to base_link";
   descr = param_utils::Description(descr_text, true);
   _pose_param.x = declare_parameter(name, _pose_param.x, descr);
 
-  name = _camera_name + ".y";
-  descr_text = "Camera offset in y direction relative to base_link";
+  name = _frame_name + ".y";
+  descr_text = "Frame offset in y direction relative to base_link";
   descr = param_utils::Description(descr_text, true);
   _pose_param.y = declare_parameter(name, _pose_param.y, descr);
 
-  name = _camera_name + ".z";
-  descr_text = "Camera offset in z direction relative to base_link";
+  name = _frame_name + ".z";
+  descr_text = "Frame offset in z direction relative to base_link";
   descr = param_utils::Description(descr_text, true);
   _pose_param.z = declare_parameter(name, _pose_param.z, descr);
 
-  name = _camera_name + ".qw";
+  name = _frame_name + ".qw";
   descr_text =
-      "Quaternion component of the camera orientation relative to base_link";
+      "Quaternion component of the frame orientation relative to base_link";
   descr = param_utils::Description(descr_text, true);
   _pose_param.qw = declare_parameter(name, _pose_param.qw, descr);
 
-  name = _camera_name + ".qx";
+  name = _frame_name + ".qx";
   descr_text =
-      "Quaternion component of the camera orientation relative to base_link";
+      "Quaternion component of the frame orientation relative to base_link";
   descr = param_utils::Description(descr_text, true);
   _pose_param.qx = declare_parameter(name, _pose_param.qx, descr);
 
-  name = _camera_name + ".qy";
+  name = _frame_name + ".qy";
   descr_text =
-      "Quaternion component of the camera orientation relative to base_link";
+      "Quaternion component of the frame orientation relative to base_link";
   descr = param_utils::Description(descr_text, true);
   _pose_param.qy = declare_parameter(name, _pose_param.qy, descr);
 
-  name = _camera_name + ".qz";
+  name = _frame_name + ".qz";
   descr_text =
-      "Quaternion component of the camera orientation relative to base_link";
+      "Quaternion component of the frame orientation relative to base_link";
   descr = param_utils::Description(descr_text, true);
   _pose_param.qz = declare_parameter(name, _pose_param.qz, descr);
 }
@@ -137,7 +137,7 @@ void TfPublisherVehicle::DeclareVerticalCameraParameters() {
   descr = param_utils::Description(descr_text, true);
   params_.has_vertical_camera = declare_parameter(name, false, descr);
   if (params_.has_vertical_camera) {
-    DeclareCameraParameters("vertical_camera", params_.vertical_camera);
+    DeclarePoseParameters("vertical_camera", params_.vertical_camera);
   }
 }
 
@@ -151,7 +151,7 @@ void TfPublisherVehicle::DeclareFrontCameraParameters() {
   descr = param_utils::Description(descr_text, true);
   params_.has_front_camera = declare_parameter(name, false, descr);
   if (params_.has_front_camera) {
-    DeclareCameraParameters("front_camera", params_.front_camera);
+    DeclarePoseParameters("front_camera", params_.front_camera);
   }
 }
 
@@ -165,7 +165,7 @@ void TfPublisherVehicle::DeclareIrSensorParameters() {
   descr = param_utils::Description(descr_text, true);
   params_.has_ir_sensor = declare_parameter(name, false, descr);
   if (params_.has_ir_sensor) {
-    DeclareCameraParameters("ir_sensor", params_.ir_sensor);
+    DeclarePoseParameters("ir_sensor", params_.ir_sensor);
   }
 }
 
