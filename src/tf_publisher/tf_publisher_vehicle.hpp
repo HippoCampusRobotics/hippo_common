@@ -31,7 +31,7 @@ class TfPublisherVehicle : public rclcpp::Node {
     Pose ir_sensor;
   };
   void DeclareParameters();
-  void DeclareCameraParameters(std::string _camera_name, Pose &_pose_param);
+  void DeclarePoseParameters(std::string _frame_name, Pose &_pose_param);
   void DeclareVerticalCameraParameters();
   void DeclareFrontCameraParameters();
   void DeclareIrSensorParameters();
